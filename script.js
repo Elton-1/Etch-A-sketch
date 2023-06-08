@@ -122,8 +122,6 @@ function redoFun(){
     let lastRow = redo[redo.length - 1];
     let chosenColor = lastRow[0];
 
-    alert(lastRow);
-
     squeres.forEach(squere => {
         if(squere.className === lastRow[1]){
             squere.style.backgroundColor = chosenColor;
