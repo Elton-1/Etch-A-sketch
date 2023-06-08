@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--This is for the clr picker-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e0bd46f5b3.js" crossorigin="anonymous"></script>
+    <title>Etch a sketch</title>
+</head>
+
+<body>
+    <header>
+        <h1>Etch a sketch</h1>
+        <div class="board-size">
+            <input type="text" class="board-size-input" placeholder="How many squeres & rows">
+            <button class="submit-btn">Submit</button>
+            <div class="alert-box">To many squeres</div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="controls">
+            <div class="top-controls">
+                <div class="undo">
+                    <div class="fa-solid fa-rotate-left"></div>
+                </div>
+                <div class="reset">
+                    <div class="fa-solid fa-arrows-rotate fa-spin fa-spin-reverse"></div>
+                </div>
+                <div class="redo">
+                    <div class="fa-solid fa-rotate-right"></div>
+                </div>
+            </div>
+            <div class="wrapper">
+                
+                <div class="color-picker-container">
+                    <p>Color picker</p>
+                    <div class="color-picker"></div>
+
+                </div>
+
+                <div class="eraser-container center-control-containers">
+                    <p>Eraser</p>
+                    <div class="fa-solid fa-eraser"></div>
+                </div>
+
+                <div class="random-container center-control-containers">
+                    <p>Random</p>
+                    <div class="fa-solid fa-shuffle"></div>
+                </div>
+
+
+                <div class="fill-container center-control-containers">
+                    <p>Fill</p>
+                    <div class="fa-solid fa-fill"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="board">
+            <div class="sketch"></div>
+        </div>
+    </div>
+    <!--For clr picker-->
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+        //THIS IS THE COLOR PICKER SCRIPT FROM https://github.com/Simonwep/pickr
+        // Simple example, see optional options for more configuration.
+        const pickr = Pickr.create({
+            el: '.color-picker',
+            theme: 'classic', // or 'monolith', or 'nano'
+
+            swatches: [
+                'rgba(244, 67, 54, 1)',
+                'rgba(233, 30, 99, 0.95)',
+                'rgba(156, 39, 176, 0.9)',
+                'rgba(103, 58, 183, 0.85)',
+                'rgba(63, 81, 181, 0.8)',
+                'rgba(33, 150, 243, 0.75)',
+                'rgba(3, 169, 244, 0.7)',
+                'rgba(0, 188, 212, 0.7)',
+                'rgba(0, 150, 136, 0.75)',
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(139, 195, 74, 0.85)',
+                'rgba(205, 220, 57, 0.9)',
+                'rgba(255, 235, 59, 0.95)',
+                'rgba(255, 193, 7, 1)'
+            ],
+
+            components: {
+
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
+
+                // Input / output Options
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    hsla: true,
+                    hsva: true,
+                    cmyk: true,
+                    input: true,
+                    clear: true,
+                    save: true
+                }
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+    <script src="transitions.js"></script>
+</body>
+
+</html>
