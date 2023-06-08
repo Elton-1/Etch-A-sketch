@@ -60,8 +60,17 @@ submitBtn.addEventListener("click", () => {
     let input = squereInputs.value;
     if (input > 100) {
         alertBox.style.display = "block";
+        alertBox.textContent = "To many squeres";
         addSqueresToBoard(10, 10);
-    } else {
+    }else if(input < 0){
+        alertBox.style.display = "block";
+        alertBox.textContent = "Cannot enter negative numbers!";
+        addSqueresToBoard(10, 10);
+    }else if(input == 0){
+        alertBox.style.display = "block";
+        alertBox.textContent = "Please enter an valid number";
+        addSqueresToBoard(10, 10);
+    }else {
         addSqueresToBoard(input, input);
     }
 
