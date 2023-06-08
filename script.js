@@ -12,7 +12,7 @@ const redoContainer = document.querySelector(".redo");
 let elements = [];
 let redo = [];
 
-let clr = "white";
+let clr = "black";
 let fill = false;
 let squeres;
 
