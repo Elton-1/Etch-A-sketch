@@ -6,8 +6,6 @@ const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
 const fillContainer = document.querySelector(".fill-container");
 
-let elements = [];
-
 let clr = "black";
 let fill = false;
 let squeres;
