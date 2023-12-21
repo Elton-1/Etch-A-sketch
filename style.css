@@ -24,7 +24,7 @@ header{
 }
 
 .board{
-    flex: 3;
+    flex: 4;
 }
 
 .board-size .board-size-input{
