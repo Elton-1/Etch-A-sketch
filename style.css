@@ -16,7 +16,7 @@ header{
 
 .container{
     display: flex;
-    gap: 4rem;
+    gap: 6rem;
 }
 
 .controls{
