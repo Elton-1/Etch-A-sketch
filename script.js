@@ -5,12 +5,8 @@ const alertBox = document.querySelector(".alert-box");
 const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
 const fillContainer = document.querySelector(".fill-container");
-const reset = document.querySelector(".reset");
-const undo = document.querySelector(".undo");
-const redoContainer = document.querySelector(".redo");
 
 let elements = [];
-let redo = [];
 
 let clr = "black";
 let fill = false;
@@ -76,7 +72,6 @@ submitBtn.addEventListener("click", () => {
 
 });
 
-
 pickr.on('change', (color, source, instance) => {
     clr = color.toRGBA().toString();
 })
@@ -98,50 +93,4 @@ fillContainer.addEventListener("click", () => {
     (!fill) ? fillContainer.firstElementChild.textContent = "Fill" : fillContainer.firstElementChild.textContent = "Unfill";
 });
 
-reset.addEventListener("click", () => {
-    squeres.forEach(squere => squere.style.background = sketchBoard.style.background)
-    elements.push(squeres);
-
-})
-
-function undoFun() {
-    
-    let lastRow = elements[elements.length - 1];
-    let chosenColor = sketchBoard.style.backgroundColor;
-
-    if(elements.length > 1){
-        for(let i = 0; i < elements.length - 1; i++){
-            if(elements[i][1] === lastRow[1]){
-                chosenColor = elements[i][0];
-            }
-        }
-    }
-
-    squeres.forEach(squere => {
-        if(squere.className === lastRow[1]){
-            squere.style.backgroundColor = chosenColor;
-        }
-    })
-    redo.push(lastRow);
-    elements.pop();
-}
-
-function redoFun(){
-
-    let lastRow = redo[redo.length - 1];
-    let chosenColor = lastRow[0];
-
-    squeres.forEach(squere => {
-        if(squere.className === lastRow[1]){
-            squere.style.backgroundColor = chosenColor;
-        }
-    })
-
-    elements.push(lastRow);
-    redo.pop();
-}
-
-undo.addEventListener("click", undoFun);
-redoContainer.addEventListener("click", redoFun);
-
-addSqueresToBoard(10, 10);
+addSqueresToBoard(30, 30);
