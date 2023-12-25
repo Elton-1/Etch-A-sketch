@@ -36,9 +36,7 @@ function addSqueresToBoard(row, col) {
     squeres.forEach(squere => {
         squere.addEventListener("mouseover", () => {
             if (!fill) {
-                squere.style.background = clr;
-                elements.push([squere.style.backgroundColor, squere.className]);
-                
+                squere.style.background = clr;    
             } else {
                 squeres.forEach(s => {
                     s.style.background = clr;
