@@ -27,7 +27,6 @@ function addSqueresToBoard(row, col) {
         for (let j = 0; j < col; j++) {
             const squere = document.createElement("div");
             squere.classList.add("squere");
-            squere.classList.add(`${i}${j}`)
             newRow.appendChild(squere);
         }
     }
