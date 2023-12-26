@@ -4,6 +4,7 @@ const submitBtn = document.querySelector(".submit-btn");
 const alertBox = document.querySelector(".alert-box");
 const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
+const reset = document.querySelector(".reset-container");
 const fillContainer = document.querySelector(".fill-container");
 
 let clr = "black";
@@ -38,30 +39,38 @@ function addSqueresToBoard(row, col) {
         square.addEventListener("mousedown", handleMouseDown);
         square.addEventListener("mouse", handleMouseUp);
         square.addEventListener("mouseover", handleMouseOver);
+        square.addEventListener("click", handleMouseClick)
     });
 }
 
-  function handleMouseDown() {
+function handleMouseDown() {
     isMouseDown = !isMouseDown;
-  }
-  
-  function handleMouseUp() {
+}
+
+function handleMouseUp() {
     isMouseDown = false;
-  }
-  
-  function handleMouseOver(event) {
+}
+
+function handleMouseOver(event) {
     if (isMouseDown) {
-      const square = event.target;
-      if (!fill) {
-        square.style.background = clr;
-      } else {
-        document.querySelectorAll(".square").forEach(s => {
-          s.style.background = clr;
-        });
-      }
+        const square = event.target;
+        if (!fill) square.style.background = clr;
     }
-  }
-  
+}
+
+function handleMouseClick(event) {
+    
+    if (!fill) {
+        const square = event.target;
+        square.style.background = clr;
+    } else {
+        console.log("Huh");
+        squeres.forEach(s => {
+            s.style.background = clr;
+        });
+    }
+}
+
 
 submitBtn.addEventListener("click", () => {
     removeSqueresFromBoard();
@@ -71,25 +80,31 @@ submitBtn.addEventListener("click", () => {
         alertBox.style.display = "block";
         alertBox.textContent = "To many squeres";
         addSqueresToBoard(30, 30);
-    }else if(input < 0){
+    } else if (input < 0) {
         alertBox.style.display = "block";
         alertBox.textContent = "Cannot enter negative numbers!";
         addSqueresToBoard(30, 30);
-    }else if(input == 0){
+    } else if (input == 0) {
         alertBox.style.display = "block";
         alertBox.textContent = "Please enter an valid number";
         addSqueresToBoard(30, 30);
-    }else {
+    } else {
         addSqueresToBoard(input, input);
     }
 
 });
 
+reset.addEventListener("click", () => {
+    squeres.forEach(square => {
+        square.style.background = "transparent";
+    })
+})
+
 pickr.on('change', (color, source, instance) => {
     clr = color.toRGBA().toString();
 })
 
-eraser.addEventListener("click", () => clr = sketchBoard.style.backgroundColor);
+eraser.addEventListener("click", () => clr = "transparent");
 
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
