@@ -73,7 +73,6 @@ function handleMouseClick(event) {
 
 
 submitBtn.addEventListener("click", () => {
-    removeSqueresFromBoard();
     alertBox.style.display = "none";
     let input = squereInputs.value;
     if (input > 100) {
@@ -86,6 +85,7 @@ submitBtn.addEventListener("click", () => {
         alertBox.style.display = "block";
         alertBox.textContent = "Cannot enter negative numbers!";
     } else {
+        removeSqueresFromBoard();
         addSqueresToBoard(input, input);
     }
 });
