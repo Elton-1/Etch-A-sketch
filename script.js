@@ -79,19 +79,18 @@ submitBtn.addEventListener("click", () => {
     if (input > 100) {
         alertBox.style.display = "block";
         alertBox.textContent = "To many squeres";
-        addSqueresToBoard(30, 30);
-    } else if (input < 0) {
-        alertBox.style.display = "block";
-        alertBox.textContent = "Cannot enter negative numbers!";
-        addSqueresToBoard(30, 30);
+        addSqueresToBoard(input, input);
     } else if (input == 0) {
         alertBox.style.display = "block";
         alertBox.textContent = "Please enter an valid number";
-        addSqueresToBoard(30, 30);
+        addSqueresToBoard(input, input);
+    } else if (input < 0) {
+        alertBox.style.display = "block";
+        alertBox.textContent = "Cannot enter negative numbers!";
+        addSqueresToBoard(input, input);
     } else {
         addSqueresToBoard(input, input);
     }
-
 });
 
 reset.addEventListener("click", () => {
