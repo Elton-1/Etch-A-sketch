@@ -16,7 +16,7 @@ header{
 
 .container{
     display: flex;
-    gap: 6rem;
+    gap: 1rem;
 }
 
 .controls{
@@ -68,8 +68,8 @@ header{
 }
 
 .sketch{
-    height: 40rem;
-    width: 85%;
+    height: 80vh;
+    width: 75%;
     margin: auto;
     box-shadow: 2px 2px 15px white ;
 }
@@ -163,4 +163,23 @@ header{
     border: 1rem solid #F4F4F6;
     padding: .3rem;
     transition: 1s;
+}
+
+@media only screen and (max-width: 1100px) {
+    .container
+    {
+        flex-direction: column;
+    }
+    .controls
+    {
+        margin: auto;
+    }
+}
+
+@media only screen and (max-width: 600px)
+{
+    .sketch
+    {
+        height: 40vh;
+    }
 }

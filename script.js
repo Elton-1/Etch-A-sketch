@@ -8,6 +8,7 @@ const fillContainer = document.querySelector(".fill-container");
 
 let clr = "black";
 let fill = false;
+let isMouseDown = false;
 let squeres;
 
 function removeSqueresFromBoard() {
@@ -32,18 +33,35 @@ function addSqueresToBoard(row, col) {
     }
     squeres = document.querySelectorAll(".squere");
 
-    squeres.forEach(squere => {
-        squere.addEventListener("mouseover", () => {
-            if (!fill) {
-                squere.style.background = clr;    
-            } else {
-                squeres.forEach(s => {
-                    s.style.background = clr;
-                });
-            }
-        })
-    })
+    squeres.forEach(square => {
+        console.log("Going through square")
+        square.addEventListener("mousedown", handleMouseDown);
+        square.addEventListener("mouse", handleMouseUp);
+        square.addEventListener("mouseover", handleMouseOver);
+    });
 }
+
+  function handleMouseDown() {
+    isMouseDown = !isMouseDown;
+  }
+  
+  function handleMouseUp() {
+    isMouseDown = false;
+  }
+  
+  function handleMouseOver(event) {
+    if (isMouseDown) {
+      const square = event.target;
+      if (!fill) {
+        square.style.background = clr;
+      } else {
+        document.querySelectorAll(".square").forEach(s => {
+          s.style.background = clr;
+        });
+      }
+    }
+  }
+  
 
 submitBtn.addEventListener("click", () => {
     removeSqueresFromBoard();
