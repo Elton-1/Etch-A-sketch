@@ -6,16 +6,19 @@ const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
 const reset = document.querySelector(".reset-container");
 const fillContainer = document.querySelector(".fill-container");
+
 let clr = "black";
 let fill = false;
 let isMouseDown = false;
 let squeres;
+
 function removeSqueresFromBoard() {
     const childs = document.querySelectorAll(".sketch > *");
     childs.forEach(child => {
         sketchBoard.removeChild(child);
     })
 }
+
 function addSqueresToBoard(row, col) {
     let height = 100 / row;
     for (let i = 0; i < row; i++) {
@@ -38,18 +41,22 @@ function addSqueresToBoard(row, col) {
         square.addEventListener("click", handleMouseClick)
     });
 }
+
 function handleMouseDown() {
     isMouseDown = !isMouseDown;
 }
+
 function handleMouseUp() {
     isMouseDown = false;
 }
+
 function handleMouseOver(event) {
     if (isMouseDown) {
         const square = event.target;
         if (!fill) square.style.background = clr;
     }
 }
+
 function handleMouseClick(event) {
     
     if (!fill) {
@@ -70,13 +77,10 @@ submitBtn.addEventListener("click", () => {
     let input = squereInputs.value;
     if (input > 100) {
         alertBox.style.display = "block";
-        alertBox.textContent = "To many squeres";
-    } else if (input == 0) {
+        alertBox.textContent = "Too many squeres";
+    } else if (input <= 0) {
         alertBox.style.display = "block";
         alertBox.textContent = "Please enter an valid number";
-    } else if (input < 0) {
-        alertBox.style.display = "block";
-        alertBox.textContent = "Cannot enter negative numbers!";
     } else {
         removeSqueresFromBoard();
         addSqueresToBoard(input, input);
