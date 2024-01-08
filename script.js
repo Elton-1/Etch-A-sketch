@@ -6,8 +6,8 @@ const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
 const reset = document.querySelector(".reset-container");
 const fillContainer = document.querySelector(".fill-container");
-const squeres = document.querySelectorAll(".squere");
 
+let squeres;
 let clr = "black";
 let fill = false;
 let isMouseDown = false;
@@ -32,6 +32,8 @@ function addSqueresToBoard(row, col) {
             newRow.appendChild(squere);
         }
     }
+
+    squeres = document.querySelectorAll(".squere");
 
     squeres.forEach(square => {
         console.log("Going through square")
