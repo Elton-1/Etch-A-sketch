@@ -34,7 +34,6 @@ function addSqueresToBoard(row, col) {
     }
     squeres = document.querySelectorAll(".squere");
     squeres.forEach(square => {
-        console.log("Going through square")
         square.addEventListener("mousedown", handleMouseDown);
         square.addEventListener("mouse", handleMouseUp);
         square.addEventListener("mouseover", handleMouseOver);
@@ -63,7 +62,6 @@ function handleMouseClick(event) {
         const square = event.target;
         square.style.background = clr;
     } else {
-        console.log("Huh");
         squeres.forEach(s => {
             s.style.background = clr;
         });
