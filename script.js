@@ -6,19 +6,16 @@ const eraser = document.querySelector(".eraser-container");
 const random = document.querySelector(".random-container");
 const reset = document.querySelector(".reset-container");
 const fillContainer = document.querySelector(".fill-container");
-
-let squeres;
 let clr = "black";
 let fill = false;
 let isMouseDown = false;
-
+let squeres;
 function removeSqueresFromBoard() {
     const childs = document.querySelectorAll(".sketch > *");
     childs.forEach(child => {
         sketchBoard.removeChild(child);
     })
 }
-
 function addSqueresToBoard(row, col) {
     let height = 100 / row;
     for (let i = 0; i < row; i++) {
@@ -32,9 +29,7 @@ function addSqueresToBoard(row, col) {
             newRow.appendChild(squere);
         }
     }
-
     squeres = document.querySelectorAll(".squere");
-
     squeres.forEach(square => {
         console.log("Going through square")
         square.addEventListener("mousedown", handleMouseDown);
@@ -43,22 +38,18 @@ function addSqueresToBoard(row, col) {
         square.addEventListener("click", handleMouseClick)
     });
 }
-
 function handleMouseDown() {
     isMouseDown = !isMouseDown;
 }
-
 function handleMouseUp() {
     isMouseDown = false;
 }
-
 function handleMouseOver(event) {
     if (isMouseDown) {
         const square = event.target;
         if (!fill) square.style.background = clr;
     }
 }
-
 function handleMouseClick(event) {
     
     if (!fill) {
@@ -74,34 +65,32 @@ function handleMouseClick(event) {
 
 
 submitBtn.addEventListener("click", () => {
+    removeSqueresFromBoard();
     alertBox.style.display = "none";
     let input = squereInputs.value;
     if (input > 100) {
         alertBox.style.display = "block";
-        alertBox.textContent = "Too many squeres";
-    } else if (input <= 0) {
+        alertBox.textContent = "To many squeres";
+    } else if (input == 0) {
         alertBox.style.display = "block";
         alertBox.textContent = "Please enter an valid number";
-    }
+    } else if (input < 0) {
+        alertBox.style.display = "block";
+        alertBox.textContent = "Cannot enter negative numbers!";
     } else {
         removeSqueresFromBoard();
         addSqueresToBoard(input, input);
     }
 });
-
 reset.addEventListener("click", () => {
     squeres.forEach(square => {
         square.style.background = "transparent";
     })
 })
-
-
 pickr.on('change', (color, source, instance) => {
     clr = color.toRGBA().toString();
 })
-
 eraser.addEventListener("click", () => clr = "transparent");
-
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
     let color = '#';
@@ -110,11 +99,9 @@ function getRandomColor() {
     }
     return color;
 }
-
 random.addEventListener("click", () => clr = getRandomColor());
 fillContainer.addEventListener("click", () => {
     (!fill) ? fill = true : fill = false;
     (!fill) ? fillContainer.firstElementChild.textContent = "Fill" : fillContainer.firstElementChild.textContent = "Unfill";
 });
-
 addSqueresToBoard(30, 30);
